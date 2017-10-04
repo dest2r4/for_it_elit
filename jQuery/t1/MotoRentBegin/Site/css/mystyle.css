@@ -146,4 +146,24 @@ textarea
 	width:850px;
 	height:160px;	
 }
+.new{
+	border:2px solid red;
+	background:#e4d7e8;
+	padding:5px 5px 5px 5px;
+}
+
+.fon_yellow{
+	background:yellow;
+	font:bold;
+}
+
+.svitlo{
+	background: #00ffff;
+	cursor:pointer;
+}
+.koshik{
+	background-color: yellow;
+	margin-top:20px;
+	border:2px solid green;
+}
 

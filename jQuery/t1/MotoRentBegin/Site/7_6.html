@@ -1,8 +1,10 @@
+
 <!DOCTYPE html>
 
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=windows-1251" />
 	<title>Супер мото</title>
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<link href="css/mystyle.css" rel="stylesheet" type="text/css" />
 </head>
@@ -10,92 +12,33 @@
 
 <script>
 
-    var count_select_moto=0 // глобальна змінна, що відповідає за к-сть вибраних мотоциклів
-    var sum_price_moto=0 // глобальна змінна, що відповідає за сумарну вартіість вибраних мотоциклів
-
     $(document).ready(function(){
 
-        /* Завдання № 7-6
-            Це завдання потрібно виконати після виконаного завдання 7-5 вдосконаливши його.  У кожного мотоцикла є ціна, що задається значенням атрибуту price  (назва атрибуту є довільною). При додаванні мотоцикла у “кошик” програма повинна підраховувати кількість мотоциклів доданих у кошик і їх сумарну вартість. При “забиранні” мотоциклів з кошика кількість вибраних мотоциклів повинна відповідно зменшуватись, також повинна зменшуватись і сумарна вартість тих мотоциклів які знаходяться у “кошику”. Для кращого розуміння поставленого завдання перегляньте уже виконане завдання: http://jquery.mait.in.ua/7/7_6.html
-        */
+
 
         $("#div_for_img div").click(function(){
+            $("#koshik").addClass("koshik");
+			id_moto=parseInt($(this).attr("nomer"));
 
-            $("#koshik").addClass("koshik") //коли перший мото попадає у кошик, тоді кошик приймає вигляд описаний у класі "koshik"
-
-            id_moto=parseInt($(this).attr("nomer")) // взнаємо номер мото
-
-            var moto_img=$(this).html() // копіюємо фото мото у змінну moto_img
-
-            $(this).html("") // витираємо фото мото по якому клікнули
-
-            $("#koshik"+id_moto).html(moto_img) // вставляємо скопійоване фото мото у корзину, у "свій" контейнер - з таким же номером
-
-            $("#koshik"+id_moto).attr("nomer",id_moto) // задаємо значення атрибута nomer відповідному контейнеру кошика
-
-            count_select_moto++ // збільшуємо значення змінної count_select_moto на 1
-
-            if(count_select_moto==4){ // якщо к-сть вибраних мото = 4, тоді ...
-
-                $("#div_for_img").removeClass("ramka") // видалити клас ramka (дивись css), тобто верхній контейнер стискається до 0
-
-                $("#div_for_img_name").text("") // очистити від тексту контейнер div_for_img_name, тобто видаляємо фразу "Виберіть мотоцикл"
-            }
-
-            var sum=parseInt($(this).attr("price")) // визначаємо вартість мотоцикла по якому клікнули і цю вартість записуємо у змінну sum
-
-            $("#koshik"+id_moto).attr("price",sum) // вартість мотоцикла, яка взята з верхнього контейнера записується як значення атрибуту price відповідного нижнього контейнера
-
-            sum_price_moto+=sum // збільшуємо значення змінної sum_price_moto на sum. sum_price_moto - є сумарною вартістю вибраних користувачем мото
-
-            if(count_select_moto==1){
-                $("#koshik_name").text("Вибрані мотоцикли") // коли ми вибрали хоча б 1 мото, тоді повинна появитись надпис "Вибрані мотоцикли" над кошиком
-            }
+            var moto_img=$(this).html();
 
 
-            $("#koshik_info").text("Ви вибрали "+count_select_moto+" мотоцикли на суму "+sum_price_moto+" грн.") // коли мото доданий до кошика, тоді змінюється надпис нижче кошика. Ця надпис говорить користувачу скільки він вибрав мотоциклів і на яку вартість.
+            $(this).html("");
 
+            $("#koshik"+id_moto).html(moto_img);
         })
+
 
         $("#koshik div").click(function(){
-            id_moto=parseInt($(this).attr("nomer"))
-            var moto_img=$(this).html()
-            $(this).html("")
-            $("#moto"+id_moto).html(moto_img)
-
-            count_select_moto--
-            if(count_select_moto<4){
-                $("#div_for_img").addClass("ramka")
-                $("#div_for_img_name").text("Виберіть мотоцикли")
-            }
-
-            var suma=parseInt($(this).attr("price"))
-            sum_price_moto-=suma
-            if(count_select_moto<1){
-                $("#koshik_name").text("")
-                $("#koshik").removeClass("koshik")
-                $("#koshik_info").text("")
-            }else{
-                $("#koshik_info").text("Ви вибрали "+count_select_moto+" мото. на суму "+sum_price_moto+" грн.")
-            }
-            $(this).attr("nomer","")
-            $(this).attr("price","")
+            id_moto=parseInt($(this).attr("nomer"));
+            var moto_img=$(this).html();
+            $(this).html("");
+            $("#moto"+id_moto).html(moto_img);
         })
-	$('#main_h1').hover(function () {
-			$(this).text(123);
-    },function () {
-		alert(123);
-    })
 
 
     })
-    //Бібліотека власних функцій
 
-    // Функція  - до завдання
-
-    // end */
-
-    //END (Бібліотека власних функцій) */
 
 </script>
 
@@ -126,35 +69,31 @@
         </p>
         -->
 
-		<!-- Блок з  мотоциклами-->
-		<div id="div_for_img_name">Виберіть мотоцикли</div>
+		<!-- Модуль  "div_for_img" з  4-ма модулями: "moto1", "moto2", "moto3","moto4". У кожному з цих модулів ("moto1", "moto2",...) є фото одного з мотоциклів. Зверніть увагу на атрибут "nomer", що доданий до кожного з цих модулів -->
+
 		<div id="div_for_img" class="ramka">
-			<div id='moto1' class='tovar' nomer='1' price='400000'>
+			<div id='moto1' class='tovar' nomer='1'>
 				<img id="img_1" src="images/moto1.jpg" width="210" height="140" />
 			</div>
-			<div id='moto2' class='tovar' nomer='2' price='200000'>
+			<div id='moto2' class='tovar' nomer='2'>
 				<img id="img_2" src="images/moto2.jpg" width="180" height="135" />
 			</div>
-			<div id='moto3' class='tovar' nomer='3' price='300000'>
+			<div id='moto3' class='tovar' nomer='3'>
 				<img id="img_3" src="images/moto3.jpg" width="168" height="126" />
 			</div>
-			<div id='moto4' class='tovar' nomer='4' price='600000'>
+			<div id='moto4' class='tovar' nomer='4'>
 				<img id="img_4" src="images/moto4.jpg" width="200" height="140" />
 			</div>
 		</div>
 
+		<!-- Контейнер "koshik". Для кожного мотоцикла свій пустий <div id='koshik1' class='tovar' nomer="1"> ... </div> -->
 
-
-
-		<!-- Доданий пустий контейнер "koshik" -->
-		<div id="koshik_name"></div>
 		<div id="koshik">
-			<div id='koshik1' class='tovar' nomer="" price=""></div>
-			<div id='koshik2' class='tovar' nomer="" price=""></div>
-			<div id='koshik3' class='tovar' nomer="" price=""></div>
-			<div id='koshik4' class='tovar' nomer="" price=""></div>
+			<div id='koshik1' class='tovar' nomer="1"></div>
+			<div id='koshik2' class='tovar' nomer="2"></div>
+			<div id='koshik3' class='tovar' nomer="3"></div>
+			<div id='koshik4' class='tovar' nomer="4"></div>
 		</div>
-		<div id="koshik_info"></div>
 
 
 		<p><strong>На данный момент к прокату доступны следующие модели:</strong></p>
