@@ -1,0 +1,68 @@
+html   {
+background-color: black;
+    color: white;
+}
+
+div#aside
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    float: left;
+    width: 25%;
+    height: 100vh;
+    font-size: 50px;
+    border-right:3px solid yellow;
+}
+div#hor
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    width: 100%;
+    height: 300px;
+    font-size: 50px;
+    border-right:3px solid yellow;
+}
+div#aside form
+{
+    position: fixed;
+    bottom: 50px;
+    font-size: 30px;
+}
+
+img.picMain  {
+    width: 100%;
+    height: 100%;
+    align-items: center;
+}
+
+h1#error
+{
+    font-size: 70px;
+    color: red;
+    text-align: center;
+}
+
+div#foto
+{
+
+    box-sizing: border-box;
+    border: 4px solid black;
+
+    float: right;
+    width:75%;
+    height: 100vh;
+}
+img {
+    width: 80%;
+    height: 500px;
+    display: block;
+    margin: 0 auto;
+}
+
+.active {
+    color:white;
+}
